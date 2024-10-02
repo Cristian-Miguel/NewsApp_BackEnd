@@ -1,6 +1,6 @@
 package com.news.app.User.shared.model;
 
-import com.news.app.Common.Roles;
+import com.news.app.Common.constant.Roles;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,42 +24,42 @@ import java.util.List;
 public class UserEntity implements UserDetails {
     @Id
     @GeneratedValue
-    Long id;
+    private Long id;
 
     @UuidGenerator
-    @Column(nullable = false)
-    String uuid;
+    @Column(nullable = false, unique = true)
+    private String uuid;
+
+    @Column(nullable = false, unique = true)
+    private String email;
 
     @Column(nullable = false)
-    String email;
+    private String username;
 
     @Column(nullable = false)
-    String username;
+    private String firstName = "Unknown";
 
     @Column(nullable = false)
-    String firstName;
+    private String lastName;
 
     @Column(nullable = false)
-    String lastName;
+    private Date createAt;
 
     @Column(nullable = false)
-    Date createDate;
+    private Date loggerAt;
 
     @Column(nullable = false)
-    Date lastLogger;
-
-    @Column(nullable = false)
-    Date lastUpdate;
+    private Date updateAt;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    Roles role;
+    private Roles role;
 
     @Column(nullable = false)
-    String password;
+    private String password;
 
     @Column(nullable = false)
-    Date birthDate;
+    private Date birthDate;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

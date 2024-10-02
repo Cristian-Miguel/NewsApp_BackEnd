@@ -1,6 +1,6 @@
 package com.news.app.User.shared.dto;
 
-import com.news.app.Common.Roles;
+import com.news.app.Common.constant.Roles;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,14 +16,11 @@ public class UserDTO {
     Long id;
     String uuid;
     String email;
+    String password;
     String username;
     String firstName;
     String lastName;
-    Date createDate;
-    Date lastLogger;
-    Date lastUpdate;
     Roles role;
-    String password;
     Date birthDate;
 
 }

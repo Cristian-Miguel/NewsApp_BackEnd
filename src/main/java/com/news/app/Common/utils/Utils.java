@@ -1,4 +1,4 @@
-package com.news.app.Common;
+package com.news.app.Common.utils;
 
 import org.springframework.context.annotation.Configuration;
 

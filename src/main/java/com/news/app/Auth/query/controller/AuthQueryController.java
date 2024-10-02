@@ -2,7 +2,7 @@ package com.news.app.Auth.query.controller;
 
 import com.news.app.Auth.command.dto.UserSignInDTO;
 import com.news.app.Auth.query.service.AuthQueryService;
-import com.news.app.Auth.shared.dto.AuthDTO;
+import com.news.app.Auth.shared.dto.AuthResponseDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +17,8 @@ public class AuthQueryController {
 
     private final AuthQueryService authQueryService;
 
-    @PostMapping(value = "sign_in")
-    public ResponseEntity<AuthDTO> SignIn(@RequestBody UserSignInDTO request) {
+    @PostMapping(value = "/sign_in")
+    public ResponseEntity<AuthResponseDTO> SignIn(@RequestBody UserSignInDTO request) {
 
         return ResponseEntity.ok(authQueryService.signIn(request));
     }

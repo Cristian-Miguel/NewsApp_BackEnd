@@ -1,7 +1,7 @@
 package com.news.app.Auth.command.controller;
 
 import com.news.app.Auth.command.service.AuthCommandService;
-import com.news.app.Auth.shared.dto.AuthDTO;
+import com.news.app.Auth.shared.dto.AuthResponseDTO;
 import com.news.app.User.shared.dto.UserDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +17,8 @@ public class AuthCommandController {
 
     private final AuthCommandService authCommandService;
 
-    @PostMapping(value = "sign_up")
-    public ResponseEntity<AuthDTO> SignUp(@RequestBody UserDTO request) {
+    @PostMapping(value = "/sign_up")
+    public ResponseEntity<AuthResponseDTO> SignUp(@RequestBody UserDTO request) {
 
         return ResponseEntity.ok(authCommandService.signUp(request));
     }
