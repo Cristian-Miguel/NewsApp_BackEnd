@@ -2,6 +2,7 @@ package com.news.app.Auth.query.service;
 
 import com.news.app.Auth.command.dto.UserSignInDTO;
 import com.news.app.Auth.shared.dto.AuthResponseDTO;
+import com.news.app.Common.constant.ErrorMessage;
 import com.news.app.Common.utils.JwtUtils;
 import com.news.app.User.query.repository.UserQueryRepository;
 import com.news.app.User.shared.model.UserEntity;
@@ -9,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -27,7 +29,7 @@ public class AuthQueryService {
 
         UserEntity userDetails = userQueryRepository.findByUsername(
                 request.getUsername()
-        ).orElseThrow();
+        ).orElseThrow(() -> new UsernameNotFoundException(ErrorMessage.USER_NOT_FOUNT.getMessage()));
 
         String token = jwtUtils.getToken(userDetails);
 
